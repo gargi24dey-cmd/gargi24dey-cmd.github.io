@@ -245,5 +245,17 @@ main h2 {
 html {
   scroll-behavior: smooth;
 }
+.resume-section {
+  width: 92%;
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.resume-section h2 {
+  color: #2F6B4F;
+  margin-bottom: 15px;
+}
 
 /* ---------- Footer
