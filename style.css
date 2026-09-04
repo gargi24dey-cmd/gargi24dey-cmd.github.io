@@ -1,15 +1,24 @@
+/* ---------- Base ---------- */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4;
+  background-color: #F7FAF8;
   color: #333;
+  line-height: 1.5;
 }
 
-/* Navbar */
+/* ---------- Navbar ---------- */
 .navbar {
-  background-color: #3E7C5A;
+  background-color: #2F6B4F;
   padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.nav-links {
   display: flex;
   gap: 30px;
 }
@@ -17,30 +26,47 @@ body {
 .navbar a {
   color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 .navbar a:hover {
-  text-decoration: underline;
+  color: #C9E8D4;
 }
 
-/* Profile section */
+#theme-toggle {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85em;
+  font-weight: 600;
+}
+
+#theme-toggle:hover {
+  background-color: rgba(255,255,255,0.15);
+}
+
+/* ---------- Profile section ---------- */
 .profile-container {
   display: flex;
   width: 92%;
-  max-width: 1400px;
-  margin: 25px auto;
-  padding: 30px;
-  gap: 40px;
+  max-width: 1300px;
+  margin: 30px auto;
+  padding: 35px;
+  gap: 45px;
   align-items: flex-start;
-  background-color: #EAF5EE;
-  border-radius: 12px;
+  background: linear-gradient(135deg, #EAF5EE 0%, #DCEFE2 100%);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(46,107,79,0.08);
 }
 
 .sidebar {
   text-align: center;
   flex-shrink: 0;
-  width: 180px;
+  width: 190px;
 }
 
 .sidebar .profile-pic {
@@ -50,18 +76,19 @@ body {
   object-fit: cover;
   margin-bottom: 15px;
   border: 4px solid #7CB88F;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 .sidebar h2 {
   margin: 0 0 5px 0;
-  font-size: 1.2em;
-  color: #3E7C5A;
+  font-size: 1.25em;
+  color: #2F6B4F;
 }
 
 .sidebar .role {
-  color: #666;
+  color: #5c5c5c;
   font-size: 0.9em;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
 .sidebar-links {
@@ -69,43 +96,56 @@ body {
   padding: 0;
   text-align: left;
   font-size: 0.9em;
+  display: inline-block;
 }
 
 .sidebar-links li {
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .sidebar-links a {
-  color: #4C8C6B;
+  color: #2F6B4F;
   text-decoration: none;
+  font-weight: 600;
+}
+
+.sidebar-links a:hover {
+  text-decoration: underline;
+}
+
+.intro-content {
+  flex: 1;
 }
 
 .intro-content h1 {
-  margin: 0 0 5px 0;
-  font-size: 2.2em;
-  color: #3E7C5A;
+  margin: 0 0 6px 0;
+  font-size: 2.3em;
+  color: #2F6B4F;
 }
 
 .intro-content .tagline {
   color: #555;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  font-size: 1.05em;
 }
 
 .intro-content h2 {
   text-align: left;
-  margin-top: 20px;
-  margin-bottom: 10px;
-  color: #3E7C5A;
-  border-bottom: 2px solid #7CB88F;
-  padding-bottom: 5px;
+  margin-top: 25px;
+  margin-bottom: 12px;
+  color: #2F6B4F;
+  border-bottom: 3px solid #7CB88F;
+  padding-bottom: 6px;
   display: inline-block;
+  font-size: 1.3em;
 }
 
 .intro-content p {
   margin-top: 0;
+  color: #444;
 }
 
-/* Skills tags */
+/* ---------- Skills ---------- */
 .skills-list {
   display: flex;
   flex-wrap: wrap;
@@ -113,107 +153,94 @@ body {
 }
 
 .skill-tag {
-  background-color: #7CB88F;
+  background-color: #2F6B4F;
   color: white;
-  padding: 6px 14px;
+  padding: 7px 16px;
   border-radius: 20px;
   font-size: 0.85em;
-  font-weight: 500;
+  font-weight: 600;
+  transition: transform 0.15s ease;
 }
 
-/* Projects page */
+.skill-tag:hover {
+  transform: translateY(-2px);
+  background-color: #3E7C5A;
+}
+
+/* ---------- Projects ---------- */
 main {
-  max-width: 1100px;
-  margin: 25px auto;
+  width: 92%;
+  max-width: 1300px;
+  margin: 40px auto;
   padding: 0 20px;
 }
 
-h2 {
+main h2 {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  color: #2F6B4F;
+  font-size: 1.8em;
 }
 
 .project-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 22px;
 }
 
 .project-card {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 12px;
+  background: white;
+  border-radius: 12px;
+  padding: 22px;
+  border: none;
+  border-left: 5px solid #7CB88F;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.1);
 }
 
 .project-card h3 {
   margin-top: 0;
+  color: #2F6B4F;
+  font-size: 1.1em;
+}
+
+.project-card p {
+  color: #555;
+  font-size: 0.95em;
 }
 
 .project-card a {
   display: inline-block;
   margin-top: 10px;
-  color: #4C8C6B;
+  color: #2F6B4F;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 700;
+  font-size: 0.9em;
 }
 
 .project-card a:hover {
   text-decoration: underline;
 }
 
-/* Resume page */
+/* ---------- Resume page ---------- */
 .download-btn {
   display: inline-block;
   margin: 15px 0;
-  padding: 10px 20px;
-  background-color: #7CB88F;
+  padding: 10px 22px;
+  background-color: #2F6B4F;
   color: white;
   text-decoration: none;
   border-radius: 6px;
+  font-weight: 600;
 }
 
-/* Footer */
-footer {
-  text-align: center;
-  padding: 15px;
-  margin-top: 20px;
-  color: #777;
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.download-btn:hover {
+  background-color: #3E7C5A;
 }
 
-#theme-toggle {
-  background: none;
-  border: 2px solid white;
-  color: white;
-  padding: 6px 14px;
-  border-radius: 20px;
-  cursor: pointer;
-  font-size: 0.85em;
-}
-
-#theme-toggle:hover {
-  background-color: rgba(255,255,255,0.15);
-}
-
-body.dark-mode {
-  background-color: #1a1a1a;
-  color: #e0e0e0;
-}
-
-body.dark-mode .profile-container,
-body.dark-mode .project-card {
-  background-color: #2b2b2b;
-  color: #e0e0e0;
-}
-
-body.dark-mode .sidebar .role,
-body.dark-mode footer {
-  color: #aaa;
-}
-
-body.dark-mode .project-card {
-  border-bottom-color: #444;
-}
+/* ---------- Footer
