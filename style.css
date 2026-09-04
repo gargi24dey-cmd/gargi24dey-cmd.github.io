@@ -7,15 +7,48 @@ body {
 }
 
 header {
-  background-color: #A8D5BA;
+  background-color: #7CB88F;
   color: white;
-  text-align: center;
   padding: 40px 20px;
 }
 
-header h1 {
+.header-content {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  text-align: left;
+}
+
+.profile-pic {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+  flex-shrink: 0;
+}
+
+.header-text h1 {
+  margin: 0 0 8px 0;
+  font-size: 2.2em;
+}
+
+.header-text .tagline {
   margin: 0;
-  font-size: 2.5em;
+  font-weight: 500;
+}
+
+.about {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 0 20px;
+  text-align: center;
+}
+
+.about h2 {
+  margin-bottom: 10px;
 }
 
 main {
@@ -49,7 +82,7 @@ h2 {
 .project-card a {
   display: inline-block;
   margin-top: 10px;
-  color: #2980b9;
+  color: #4C8C6B;
   text-decoration: none;
   font-weight: bold;
 }
@@ -62,24 +95,4 @@ footer {
   text-align: center;
   padding: 20px;
   color: #777;
-}
-
-.profile-pic {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid white;
-  margin-bottom: 15px;
-}
-
-.about {
-  max-width: 700px;
-  margin: 40px auto;
-  padding: 0 20px;
-  text-align: center;
-}
-
-.about h2 {
-  margin-bottom: 10px;
 }
