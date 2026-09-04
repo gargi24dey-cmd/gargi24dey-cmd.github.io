@@ -257,5 +257,87 @@ html {
   color: #2F6B4F;
   margin-bottom: 15px;
 }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2F6B4F;
+  padding: 15px 40px;
+}
+
+.site-title {
+  color: white;
+  font-weight: 700;
+  font-size: 1.1em;
+}
+
+.navbar .nav-links a {
+  color: white;
+  text-decoration: underline;
+  margin-left: 25px;
+  font-weight: 600;
+}
+
+.navbar .nav-links a:hover {
+  color: #C9E8D4;
+}
+
+.page-layout {
+  display: flex;
+  width: 92%;
+  max-width: 1300px;
+  margin: 40px auto;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.sidebar {
+  width: 220px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.sidebar .profile-pic {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #7CB88F;
+  margin-bottom: 12px;
+}
+
+.main-content {
+  flex: 1;
+}
+
+.main-content h1 {
+  color: #2F6B4F;
+  margin-bottom: 5px;
+}
+
+.main-content .subtitle {
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.find-here-list a,
+.main-content a {
+  color: #2F6B4F;
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.content-page {
+  width: 92%;
+  max-width: 1300px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.content-page h1 {
+  color: #2F6B4F;
+  margin-bottom: 20px;
+}
 
 /* ---------- Footer
