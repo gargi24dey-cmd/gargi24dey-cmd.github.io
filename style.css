@@ -178,3 +178,42 @@ footer {
   margin-top: 20px;
   color: #777;
 }
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#theme-toggle {
+  background: none;
+  border: 2px solid white;
+  color: white;
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85em;
+}
+
+#theme-toggle:hover {
+  background-color: rgba(255,255,255,0.15);
+}
+
+body.dark-mode {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+body.dark-mode .profile-container,
+body.dark-mode .project-card {
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+
+body.dark-mode .sidebar .role,
+body.dark-mode footer {
+  color: #aaa;
+}
+
+body.dark-mode .project-card {
+  border-bottom-color: #444;
+}
