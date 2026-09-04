@@ -4,9 +4,8 @@ const container = document.getElementById("project-container");
 fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
   .then(response => response.json())
   .then(repos => {
-    container.innerHTML = ""; // clear "Loading..."
+    container.innerHTML = "";
     repos.forEach(repo => {
-      // Skip the portfolio repo itself
       if (repo.name === `${username}.github.io`) return;
       const card = document.createElement("div");
       card.className = "project-card";
