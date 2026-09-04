@@ -242,5 +242,8 @@ main h2 {
 .download-btn:hover {
   background-color: #3E7C5A;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 /* ---------- Footer
