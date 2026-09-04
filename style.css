@@ -115,3 +115,28 @@ footer {
   padding: 20px;
   color: #777;
 }
+
+.profile-container {
+  background-color: #EAF5EE;
+  border-radius: 12px;
+  padding: 30px;
+}
+
+.sidebar .profile-pic {
+  border: 4px solid #7CB88F;
+}
+
+.sidebar h2 {
+  color: #3E7C5A;
+}
+
+.intro-content h1 {
+  color: #3E7C5A;
+}
+
+.intro-content h2 {
+  color: #3E7C5A;
+  border-bottom: 2px solid #7CB88F;
+  padding-bottom: 5px;
+  display: inline-block;
+}
