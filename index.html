@@ -6,27 +6,30 @@
   <title>Gargi Dey - Portfolio</title>
   <link rel="stylesheet" href="style.css">
 </head>
-    <script src="theme.js"></script>
 <body>
 
   <!-- Navigation -->
   <nav class="navbar">
     <div class="nav-links">
-      <a href="index.html">Home</a>
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#interests">Interests</a>
+      <a href="#projects">Projects</a>
       <a href="resume.html">Resume</a>
     </div>
-    <button id="theme-toggle">🌙 Dark Mode</button>
   </nav>
 
   <!-- Header / Intro -->
-  <div class="profile-container">
+  <div class="profile-container" id="home">
     <!-- Left sidebar -->
     <aside class="sidebar">
       <img src="image.png.jpeg" alt="Gargi Dey" class="profile-pic">
       <h2>Gargi Dey</h2>
       <p class="role">MSc Economics (Data Analytics)</p>
       <ul class="sidebar-links">
-        <li>📍 Kapila Society, Gokhale Nagar, Pune - 411016</li>
+        <li>📍 India</li>
+        <li>🎓 <!-- your institution name here --></li>
+        <li>✉️ <a href="mailto:<!-- your email here -->"><!-- your email here --></a></li>
         <li><a href="https://github.com/gargi24dey-cmd" target="_blank">GitHub</a></li>
         <li><a href="#" target="_blank">LinkedIn</a></li>
       </ul>
@@ -37,7 +40,7 @@
       <h1>Gargi Dey</h1>
       <p class="tagline">Aspiring Data Analyst focused on econometrics, machine learning, and applied data science.</p>
 
-      <h2>About Me</h2>
+      <h2 id="about">About Me</h2>
       <p>
        I am pursuing an MSc. in Economics with a focus on Data Analytics, with a strong interest in applying 
        economic and analytical concepts to real-world business problems. I am a self-motivated, goal-oriented, 
@@ -46,6 +49,20 @@
        problem-solving skills to derive meaningful insights from data, support evidence-based decision-making, 
        and contribute effectively to a data-driven organization while continuously developing my technical and 
        professional skills.
+      </p>
+
+      <h2>Current Focus</h2>
+      <p>
+        I'm currently completing my MSc dissertation on explainable machine learning for early prediction of
+        corporate sales slowdowns in Indian listed firms, alongside a graded portfolio of applied data projects
+        spanning SQL, Power BI, R, Stata, Python, and Orange.
+      </p>
+
+      <h2 id="interests">Interests</h2>
+      <p>
+        My academic interests are consistently oriented around Indian economic data — including labour markets,
+        financial distress, digital payments, and agricultural economics — using applied quantitative and
+        machine learning methods to explore economic and financial questions relevant to the Indian context.
       </p>
 
       <h2>Skills</h2>
@@ -65,7 +82,7 @@
   </div>
 
   <!-- Projects Section (auto-loaded from GitHub) -->
-  <main>
+  <main id="projects">
     <h2>Projects</h2>
     <div class="project-grid" id="project-container">
       <p>Loading projects...</p>
@@ -78,7 +95,6 @@
   </footer>
 
   <script src="script.js"></script>
-  <script src="theme.js"></script>
 
 </body>
 </html>
