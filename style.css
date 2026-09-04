@@ -6,141 +6,7 @@ body {
   color: #333;
 }
 
-.profile-container {
-  display: flex;
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
-  gap: 50px;
-  align-items: flex-start;
-}
-
-.sidebar {
-  text-align: center;
-  flex-shrink: 0;
-  width: 180px;
-}
-
-.sidebar .profile-pic {
-  width: 160px;
-  height: 160px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-bottom: 15px;
-}
-
-.sidebar h2 {
-  margin: 0 0 5px 0;
-  font-size: 1.2em;
-}
-
-.sidebar .role {
-  color: #666;
-  font-size: 0.9em;
-  margin-bottom: 15px;
-}
-
-.sidebar-links {
-  list-style: none;
-  padding: 0;
-  text-align: left;
-  font-size: 0.9em;
-}
-
-.sidebar-links li {
-  margin-bottom: 8px;
-}
-
-.sidebar-links a {
-  color: #4C8C6B;
-  text-decoration: none;
-}
-
-.intro-content h1 {
-  margin: 0 0 10px 0;
-  font-size: 2.2em;
-  color: #333;
-}
-
-.intro-content .tagline {
-  color: #555;
-  margin-bottom: 25px;
-}
-
-.intro-content h2 {
-  text-align: left;
-  margin-bottom: 10px;
-}
-
-main {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.project-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
-}
-
-.project-card {
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 20px;
-}
-
-.project-card h3 {
-  margin-top: 0;
-}
-
-.project-card a {
-  display: inline-block;
-  margin-top: 10px;
-  color: #4C8C6B;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.project-card a:hover {
-  text-decoration: underline;
-}
-
-footer {
-  text-align: center;
-  padding: 20px;
-  color: #777;
-}
-
-.profile-container {
-  background-color: #EAF5EE;
-  border-radius: 12px;
-  padding: 30px;
-}
-
-.sidebar .profile-pic {
-  border: 4px solid #7CB88F;
-}
-
-.sidebar h2 {
-  color: #3E7C5A;
-}
-
-.intro-content h1 {
-  color: #3E7C5A;
-}
-
-.intro-content h2 {
-  color: #3E7C5A;
-  border-bottom: 2px solid #7CB88F;
-  padding-bottom: 5px;
-  display: inline-block;
-}
-
+/* Navbar */
 .navbar {
   background-color: #3E7C5A;
   padding: 15px 40px;
@@ -158,17 +24,14 @@ footer {
   text-decoration: underline;
 }
 
-.profile-container,
-main {
+/* Profile section */
+.profile-container {
+  display: flex;
   max-width: 1100px;
-}
-
-.download-btn {
-  display: inline-block;
-  margin: 15px 0;
-  padding: 10px 20px;
-  background-color: #7CB88F;
-  color: white;
-  text-decoration: none;
-  border-radius: 6px;
+  margin: 25px auto;
+  padding: 30px;
+  gap: 40px;
+  align-items: flex-start;
+  background-color: #EAF5EE;
+  border-radius: 12px;
 }
