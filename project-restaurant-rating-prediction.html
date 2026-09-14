@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Rating Prediction - Gargi Dey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="site-title">Gargi Dey</a>
+    <div class="nav-links">
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="interests.html">Interests</a>
+      <a href="cv.html">CV</a>
+      <a href="about.html">About Me</a>
+    </div>
+    <button id="theme-toggle">🌙 Dark Mode</button>
+  </nav>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <img src="image.png.jpeg" alt="Gargi Dey" class="profile-pic">
+      <h2>Gargi Dey</h2>
+      <p class="role">MSc Economics (Data Analytics)</p>
+      <ul class="sidebar-links">
+        <li>📍 Pune, India</li>
+        <li>🎓 Symbiosis School of Economics</li>
+        <li>✉️ <a href="mailto:gargi.dey.2025@sse.ac.in">Email</a></li>
+        <li><a href="https://github.com/gargi24dey-cmd" target="_blank">GitHub</a></li>
+        <li><a href="#" target="_blank">LinkedIn</a></li>
+      </ul>
+    </aside>
+
+    <div class="page-content">
+      <a href="projects.html" class="back-link">← Back to Projects</a>
+      <h1>Predicting Restaurant Rating Categories</h1>
+      <p class="project-subtitle">Random Forest vs Logistic Regression: A Comparative Analysis of Zomato and Swiggy</p>
+
+      <p>
+        This project uses machine learning classification techniques to predict restaurant rating
+        categories and compares model performance across two food-delivery platforms — Zomato and
+        Swiggy — focusing on restaurants in Bangalore. The workflows were built in Orange Data Mining
+        to keep the analysis reproducible, comparing Random Forest and Logistic Regression to see
+        which performs better at predicting rating categories.
+      </p>
+
+      <h2>Project Objectives</h2>
+      <ul>
+        <li>Predict whether a restaurant belongs to a Low, Medium, or High rating category</li>
+        <li>Compare the performance of Random Forest and Logistic Regression</li>
+        <li>Identify how cost, votes, services, and restaurant type differ across rating categories</li>
+        <li>Compare rating patterns and model performance between Zomato and Swiggy</li>
+      </ul>
+
+      <h2>Dataset</h2>
+      <h3>Zomato Bangalore Restaurants</h3>
+      <p>
+        Source: Kaggle — Zomato Bangalore Restaurants Dataset. Raw records: 51,717; records after
+        cleaning: 41,418 (~80% retention). Rating categories: Low (&lt;3.5), Medium (3.5–4.0), High (&gt;4.0).
+        Features used: online_order, book_table, votes, rest_type, listed_in(type), cost_clean, and platform.
+      </p>
+
+      <h3>Swiggy Bangalore Restaurants</h3>
+      <p>
+        Source: Kaggle — Swiggy Bangalore Restaurants Dataset. Raw records: 10,298; records after
+        cleaning: 1,499 (~14.6% retention), using area, category, and cost_clean. The Swiggy dataset
+        had many missing ratings, and no restaurant in the cleaned sample scored above 4.0 — making
+        this predominantly a Low/Medium classification problem.
+      </p>
+
+      <h2>Data Cleaning</h2>
+      <p>
+        Preprocessing included parsing rating values (e.g. "4.1/5"), converting cost into numeric
+        values, handling unusable entries like "NEW" or "–", removing observations without a usable
+        rating, creating the target variable <code>rating_class</code>, and encoding categorical
+        variables — all performed within Orange's Python Script widget to keep the workflow
+        reproducible.
+      </p>
+
+      <h2>Machine Learning Models</h2>
+      <p><strong>Logistic Regression</strong> — used as a linear, interpretable baseline, assuming additive relationships between predictors and outcome.</p>
+      <p><strong>Random Forest</strong> — an ensemble of decision trees, chosen since restaurant characteristics (e.g. cost and popularity) likely interact non-linearly.</p>
+
+      <h2>Workflow</h2>
+      <p>
+        Dataset → Python Script → Select Columns → Preprocess → split into Logistic Regression and
+        Random Forest → Test &amp; Score → Confusion Matrix. A similar workflow was built for Swiggy.
+        Evaluation used 5-fold stratified cross-validation.
+      </p>
+
+      <h2>Key Findings</h2>
+      <h3>Zomato</h3>
+      <table class="results-table">
+        <tr><th>Model</th><th>AUC</th></tr>
+        <tr><td>Random Forest</td><td>0.928</td></tr>
+        <tr><td>Logistic Regression</td><td>0.778</td></tr>
+      </table>
+      <p>
+        Random Forest outperformed Logistic Regression by a 19.4 percentage-point accuracy margin,
+        suggesting rating patterns involve non-linear relationships better captured by tree-based models.
+      </p>
+
+      <h3>Swiggy</h3>
+      <table class="results-table">
+        <tr><th>Model</th><th>AUC</th></tr>
+        <tr><td>Random Forest</td><td>0.537</td></tr>
+        <tr><td>Logistic Regression</td><td>0.600</td></tr>
+      </table>
+      <p>
+        Both models performed only slightly better than random classification — largely because only
+        1,499 restaurants had usable ratings, and ~82% fell into the Medium category, leaving little
+        variation for the models to learn from.
+      </p>
+
+      <h2>Business Insights</h2>
+      <p>
+        <strong>Cost and rating:</strong> a one-way ANOVA showed a strong association between cost and
+        rating category (F = 4708.6, p &lt; 0.001) — higher-rated restaurants generally had higher costs,
+        though this reflects association rather than causation.
+      </p>
+      <p>
+        <strong>Votes and rating:</strong> customer engagement, proxied by votes, also differed
+        significantly across categories (F = 5866.1, p &lt; 0.001), with higher-rated restaurants
+        showing substantially greater engagement.
+      </p>
+      <p>
+        <strong>Platform differences:</strong> model performance depended as much on data structure and
+        quality as on the algorithm — Zomato had much more variation across rating categories, while
+        Swiggy was heavily concentrated around Medium.
+      </p>
+
+      <h2>Tools & Technologies</h2>
+      <div class="skills-list">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Orange Data Mining</span>
+        <span class="skill-tag">Random Forest</span>
+        <span class="skill-tag">Logistic Regression</span>
+        <span class="skill-tag">5-Fold Cross-Validation</span>
+        <span class="skill-tag">ANOVA</span>
+        <span class="skill-tag">Data Visualization</span>
+      </div>
+
+      <h2>Future Scope</h2>
+      <ul>
+        <li>Investigating interactions between cuisine type and cost</li>
+        <li>Incorporating delivery time and order volume where available</li>
+        <li>Testing a finer five-level rating classification instead of three categories</li>
+        <li>Including platform-specific variables to better explain Swiggy ratings</li>
+        <li>Exploring additional machine learning algorithms for comparison</li>
+      </ul>
+
+      <a href="https://github.com/gargi24dey-cmd/restaurant-rating-prediction" target="_blank" class="download-btn">View Full Repository on GitHub</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Gargi Dey. Built with HTML, CSS & JavaScript.</p>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
