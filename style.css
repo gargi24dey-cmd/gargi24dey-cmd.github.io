@@ -285,3 +285,59 @@ body.dark-mode .page-content a {
 body.dark-mode .edu-entry h3 {
   color: #ddd;
 }
+
+.project-title-link {
+  color: #2F6B4F;
+  text-decoration: none;
+  font-weight: inherit;
+}
+
+.project-title-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+body.dark-mode .project-title-link {
+  color: #7CD9A5;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 15px;
+  font-size: 0.9em;
+  text-decoration: none;
+}
+
+.project-subtitle {
+  color: #666;
+  font-style: italic;
+  margin-top: -5px;
+  margin-bottom: 20px;
+}
+
+.results-table {
+  border-collapse: collapse;
+  margin: 10px 0 15px 0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.results-table th, .results-table td {
+  border: 1px solid #ddd;
+  padding: 8px 14px;
+  text-align: left;
+}
+
+.results-table th {
+  background-color: #2F6B4F;
+  color: white;
+}
+
+body.dark-mode .results-table th, 
+body.dark-mode .results-table td {
+  border-color: #444;
+}
+
+body.dark-mode .results-table td {
+  color: #ddd;
+}
