@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gender Patterns in India's Labour-Force Participation - Gargi Dey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="site-title">Gargi Dey</a>
+    <div class="nav-links">
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="interests.html">Interests</a>
+      <a href="cv.html">CV</a>
+      <a href="about.html">About Me</a>
+    </div>
+    <button id="theme-toggle">🌙 Dark Mode</button>
+  </nav>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <img src="image.png.jpeg" alt="Gargi Dey" class="profile-pic">
+      <h2>Gargi Dey</h2>
+      <p class="role">MSc Economics (Data Analytics)</p>
+      <ul class="sidebar-links">
+        <li>📍 Pune, India</li>
+        <li>🎓 Symbiosis School of Economics</li>
+        <li>✉️ <a href="mailto:gargi.dey.2025@sse.ac.in">Email</a></li>
+        <li><a href="https://github.com/gargi24dey-cmd" target="_blank">GitHub</a></li>
+        <li><a href="#" target="_blank">LinkedIn</a></li>
+      </ul>
+    </aside>
+
+    <div class="page-content">
+      <a href="projects.html" class="back-link">← Back to Projects</a>
+      <span class="status-badge">In Progress</span>
+      <h1>Gender Patterns in India's Labour-Force Participation</h1>
+      <p class="project-subtitle">A PLFS 2025 data preparation and analysis project</p>
+
+      <p>
+        This project uses data from the Periodic Labour Force Survey (PLFS) 2025 to investigate
+        gender-related patterns in India's labour-force participation. The current stage focuses on
+        preparing and validating the PLFS dataset for further analysis of labour-force participation
+        across demographic and geographic dimensions, using Python, Pandas, PySpark, and Google Colab.
+      </p>
+
+      <h2>Introduction</h2>
+      <p>
+        Labour-force participation is an important indicator of individuals' involvement in economic
+        activity, and differences between men and women can vary across states and demographic or
+        socioeconomic characteristics. The PLFS provides individual-level data — covering gender, age,
+        education, state, rural-urban sector, marital status, social group, and principal activity
+        status — that can be used to study these patterns. At this stage, the primary focus is ensuring
+        the dataset is suitable for subsequent analysis through systematic examination and cleaning.
+      </p>
+
+      <h2>Data Loading</h2>
+      <p>
+        The raw PLFS dataset was loaded into the Google Colab environment via Google Drive, using a
+        PySpark-based CSV loading process. The raw dataset was preserved separately throughout, so it
+        would remain unmodified during preprocessing.
+      </p>
+
+      <h2>Data Quality Assessment</h2>
+      <p>
+        Before cleaning, the dataset was examined for its structure and potential quality issues,
+        including row and column counts, missing values, duplicate records, blank/empty values, data
+        types, categorical consistency, age values, sampling multiplier values, and potential outliers
+        — providing a baseline for the cleaning process that followed.
+      </p>
+
+      <h2>Cleaning Approach</h2>
+      <p>
+        The process followed a conservative approach — identify, verify, and correct or remove only
+        when justified — rather than applying automatic deletion or imputation:
+      </p>
+      <ul>
+        <li><strong>Missing values:</strong> examined column-by-column; no unnecessary imputation or removal applied</li>
+        <li><strong>Duplicate records:</strong> checked and genuine duplicates removed, with before/after counts compared</li>
+        <li><strong>Blank strings:</strong> checked separately from standard null detection, since empty strings can hide as "non-missing"</li>
+        <li><strong>Data types:</strong> reviewed for key variables; no artificial corrections were made where none were needed</li>
+        <li><strong>Categorical consistency:</strong> variables like sex, state, sector, and activity status checked for inconsistent values, spelling differences, or extra spaces</li>
+        <li><strong>Invalid values:</strong> age distribution investigated for impossible values (negative ages, ages above 120); none found requiring automatic deletion</li>
+        <li><strong>Age outliers:</strong> identified using the IQR method and visually inspected via boxplot, but retained unless there was evidence they were erroneous — a statistically unusual age doesn't necessarily mean an incorrect one</li>
+      </ul>
+
+      <h2>Cleaned Dataset & Validation</h2>
+      <p>
+        A separate cleaned dataset was created and saved independently of the raw file, preserving the
+        original for comparison. A before-and-after validation table was built comparing row counts,
+        column counts, missing values, duplicates, invalid records, and data-type corrections — giving
+        evidence that the cleaning was systematic rather than arbitrary. A cleaning log was also
+        maintained, documenting each issue, observation, action taken, and justification, to keep the
+        process transparent and reproducible.
+      </p>
+
+      <h2>Current Progress</h2>
+      <p>
+        The data preparation and cleaning stage is complete — from loading the raw dataset through
+        structural inspection, missing-value and duplicate analysis, data-type and categorical checks,
+        invalid-value and outlier investigation, to producing a validated, cleaned dataset with a full
+        documentation log.
+      </p>
+      <p>
+        <strong>Project status:</strong> In Progress. The next stage will focus on Exploratory Data
+        Analysis (EDA) of the cleaned PLFS dataset, examining patterns across gender, age, education,
+        state, sector, and principal activity status.
+      </p>
+
+      <h2>Tools & Technologies</h2>
+      <div class="skills-list">
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Pandas</span>
+        <span class="skill-tag">PySpark</span>
+        <span class="skill-tag">Google Colab</span>
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">Data Validation</span>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Gargi Dey. Built with HTML, CSS & JavaScript.</p>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
