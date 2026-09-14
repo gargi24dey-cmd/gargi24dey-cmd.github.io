@@ -10,9 +10,9 @@ fetch(`https://api.github.com/users/${username}/repos?sort=updated`)
       const card = document.createElement("div");
       card.className = "project-card";
       card.innerHTML = `
-        <h3>${repo.name}</h3>
+        <h3><a href="project-${repo.name}.html" class="project-title-link">${repo.name}</a></h3>
         <p>${repo.description ? repo.description : "No description added yet."}</p>
-        <a href="${repo.html_url}" target="_blank">View on GitHub</a>
+        <a href="${repo.html_url}" target="_blank" class="github-link">View on GitHub</a>
       `;
       container.appendChild(card);
     });
