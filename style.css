@@ -286,7 +286,8 @@ body.dark-mode .edu-entry h3 {
   color: #ddd;
 }
 
-.project-title-link {
+.page-content a.project-title-link,
+.project-card a.project-title-link {
   color: #2F6B4F;
   text-decoration: none;
   font-weight: inherit;
@@ -297,15 +298,19 @@ body.dark-mode .edu-entry h3 {
   cursor: pointer;
 }
 
-body.dark-mode .project-title-link {
+body.dark-mode .page-content a.project-title-link {
   color: #7CD9A5;
 }
 
-.back-link {
+.page-content a.back-link {
   display: inline-block;
   margin-bottom: 15px;
   font-size: 0.9em;
   text-decoration: none;
+}
+
+.page-content a.back-link:hover {
+  text-decoration: underline;
 }
 
 .project-subtitle {
@@ -353,5 +358,16 @@ body.dark-mode .results-table td {
 body.dark-mode .key-idea {
   background-color: #223328;
   color: #ddd;
+}
+
+.status-badge {
+  display: inline-block;
+  background-color: #E8A33D;
+  color: white;
+  font-size: 0.75em;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
 }
 
