@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Global Socioeconomic Development Dashboard - Gargi Dey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="site-title">Gargi Dey</a>
+    <div class="nav-links">
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="interests.html">Interests</a>
+      <a href="cv.html">CV</a>
+      <a href="about.html">About Me</a>
+    </div>
+    <button id="theme-toggle">🌙 Dark Mode</button>
+  </nav>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <img src="image.png.jpeg" alt="Gargi Dey" class="profile-pic">
+      <h2>Gargi Dey</h2>
+      <p class="role">MSc Economics (Data Analytics)</p>
+      <ul class="sidebar-links">
+        <li>📍 Pune, India</li>
+        <li>🎓 Symbiosis School of Economics</li>
+        <li>✉️ <a href="mailto:gargi.dey.2025@sse.ac.in">Email</a></li>
+        <li><a href="https://github.com/gargi24dey-cmd" target="_blank">GitHub</a></li>
+        <li><a href="#" target="_blank">LinkedIn</a></li>
+      </ul>
+    </aside>
+
+    <div class="page-content">
+      <a href="projects.html" class="back-link">← Back to Projects</a>
+      <h1>Global Socioeconomic Development Dashboard</h1>
+      <p class="project-subtitle">An interactive Power BI analysis of global development indicators</p>
+
+      <p>
+        This project is an interactive Power BI dashboard analyzing economic and socioeconomic
+        development across countries using World Bank World Development Indicators (WDI) 2022 data.
+        It combines indicators related to economic prosperity, health, digital connectivity, education,
+        and employment to provide a comparative view of development across countries.
+      </p>
+
+      <h2>Objectives</h2>
+      <ul>
+        <li>Compare economic and socioeconomic indicators across countries</li>
+        <li>Examine the relationship between GDP per capita and development outcomes</li>
+        <li>Analyze relationships between income, life expectancy, internet usage, education, and unemployment</li>
+        <li>Develop a composite Development Score for cross-country comparison</li>
+        <li>Rank countries according to their overall development performance</li>
+        <li>Allow users to explore the development profile of individual countries</li>
+      </ul>
+
+      <h2>Dataset</h2>
+      <p>
+        The project uses World Bank WDI 2022 data, with key indicators including GDP per capita, life
+        expectancy, internet usage, unemployment rate, and education expenditure. The data was cleaned
+        and transformed using Power Query before analysis and visualization.
+      </p>
+
+      <h2>Dashboard Structure</h2>
+      <h3>Page 1 — Global Development Indicators</h3>
+      <p>
+        An overview using average GDP per capita, life expectancy, internet usage, and unemployment
+        rate, alongside a global GDP per capita map, GDP-vs-life-expectancy analysis, country-level
+        filtering, and key insights.
+      </p>
+
+      <h3>Page 2 — Economic and Social Relationships</h3>
+      <p>
+        Scatter plots exploring GDP per capita vs. life expectancy, GDP per capita vs. unemployment,
+        GDP per capita vs. internet usage, and education expenditure vs. life expectancy — helping
+        identify patterns and differences across countries.
+      </p>
+
+      <h3>Page 3 — Development Ranking</h3>
+      <p>
+        Ranks countries using a composite Development Score, alongside the average, highest, and lowest
+        scores, the number of countries analyzed, and key takeaways. The score combines five dimensions:
+      </p>
+      <p class="key-idea">
+        Development Score = (GDP Score + Life Expectancy Score + Internet Score + Education Score + Employment Score) / 5
+      </p>
+      <p>This provides a broader measure of development rather than relying only on GDP.</p>
+
+      <h3>Page 4 — Country Development Profile</h3>
+      <p>
+        An interactive country-level view where users can select a country and examine its Development
+        Score, rank, GDP per capita, life expectancy, internet usage, unemployment rate, education
+        expenditure, individual component scores, and the difference between that country's score and
+        the global average.
+      </p>
+
+      <h2>Key Insights</h2>
+      <ul>
+        <li>Countries with higher GDP per capita generally tend to have higher life expectancy</li>
+        <li>Internet usage varies substantially across countries, reflecting differences in digital connectivity</li>
+        <li>Economic prosperity alone does not fully explain socioeconomic development</li>
+        <li>Countries differ considerably in their overall development performance</li>
+        <li>A composite development measure provides a broader perspective than GDP per capita alone</li>
+        <li>Development outcomes reflect multiple dimensions — health, education, employment, and digital access</li>
+      </ul>
+
+      <h2>Tools & Technologies</h2>
+      <div class="skills-list">
+        <span class="skill-tag">Power BI</span>
+        <span class="skill-tag">Power Query</span>
+        <span class="skill-tag">DAX</span>
+        <span class="skill-tag">Microsoft Excel</span>
+        <span class="skill-tag">World Bank WDI 2022</span>
+      </div>
+
+      <a href="https://github.com/gargi24dey-cmd/global-development-dashboard" target="_blank" class="download-btn">View Full Repository on GitHub</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Gargi Dey. Built with HTML, CSS & JavaScript.</p>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
