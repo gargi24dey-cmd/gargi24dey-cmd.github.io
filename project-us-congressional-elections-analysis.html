@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inside the U.S. Congress - Gargi Dey</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="site-title">Gargi Dey</a>
+    <div class="nav-links">
+      <a href="projects.html">Projects</a>
+      <a href="research.html">Research</a>
+      <a href="interests.html">Interests</a>
+      <a href="cv.html">CV</a>
+      <a href="about.html">About Me</a>
+    </div>
+    <button id="theme-toggle">🌙 Dark Mode</button>
+  </nav>
+
+  <div class="page-layout">
+    <aside class="sidebar">
+      <img src="image.png.jpeg" alt="Gargi Dey" class="profile-pic">
+      <h2>Gargi Dey</h2>
+      <p class="role">MSc Economics (Data Analytics)</p>
+      <ul class="sidebar-links">
+        <li>📍 Pune, India</li>
+        <li>🎓 Symbiosis School of Economics</li>
+        <li>✉️ <a href="mailto:gargi.dey.2025@sse.ac.in">Email</a></li>
+        <li><a href="https://github.com/gargi24dey-cmd" target="_blank">GitHub</a></li>
+        <li><a href="#" target="_blank">LinkedIn</a></li>
+      </ul>
+    </aside>
+
+    <div class="page-content">
+      <a href="projects.html" class="back-link">← Back to Projects</a>
+      <h1>Inside the U.S. Congress</h1>
+      <p class="project-subtitle">Representation, Performance & Power</p>
+
+      <p>
+        This project explores the story of congressional elections and political power in the United
+        States using congressional data from 1973 to 2018. Rather than treating elections only as a
+        question of who won or lost, it follows the broader journey from the ballot box to political
+        power — examining electoral performance, party composition, demographic representation,
+        seniority, and congressional leadership. The analysis combines data visualization with
+        statistical modelling to identify how electoral performance relates to party affiliation,
+        demographics, majority-party status, and seniority.
+      </p>
+
+      <p class="key-idea">
+        Key idea: elections determine who enters Congress, party balance determines who forms the
+        majority, and institutional experience and leadership structures help shape political power.
+      </p>
+
+      <h2>Research Questions</h2>
+      <ul>
+        <li>How has congressional representation changed over time?</li>
+        <li>How are party affiliation, demographic characteristics, majority-party status, and seniority associated with electoral performance?</li>
+        <li>How are these characteristics associated with majority-party membership?</li>
+      </ul>
+
+      <h2>Dataset</h2>
+      <p>
+        The dataset covers 1973–2018, containing 10,262 observations and 38 variables, including year,
+        state, party affiliation, gender, African American and Latino representation, electoral vote
+        percentage, majority-party status, seniority, political power indicators, and formal leadership
+        positions (Speaker, committee chair, subcommittee chair, majority/minority leader). The
+        statistical models use observations with complete information for the variables included in
+        each model.
+      </p>
+
+      <h2>Project Story</h2>
+      <p>The analysis is structured as a journey from elections to institutional power:</p>
+      <ul>
+        <li><strong>Who is represented?</strong> — changes in demographic representation over time</li>
+        <li><strong>Who controls Congress?</strong> — party composition and the Democratic–Republican balance</li>
+        <li><strong>How well do individual members perform?</strong> — electoral vote percentages compared across parties and demographic groups</li>
+        <li><strong>What happens after election?</strong> — seniority, political power, and leadership</li>
+        <li><strong>What does the statistical evidence show?</strong> — two regression models examining these relationships systematically</li>
+      </ul>
+
+      <h2>Methods</h2>
+      <h3>Data Visualization</h3>
+      <p>
+        Built using <code>ggplot2</code> and <code>gganimate</code> in R, including animated
+        visualizations of demographic representation, party composition, electoral performance,
+        seniority, political power, and leadership over time.
+      </p>
+
+      <h3>OLS Regression</h3>
+      <p>
+        Examines the association between electoral vote percentage and party affiliation, gender,
+        African American representation, Latino representation, majority-party status, and seniority.
+        The model explains approximately 12.7% of the variation in vote share. Since heteroskedasticity
+        was detected, robust standard errors were used for inference.
+      </p>
+
+      <h3>Logistic Regression</h3>
+      <p>
+        Examines the association between majority-party membership and party affiliation, gender,
+        African American and Latino representation, seniority, and electoral vote percentage.
+        Classification accuracy is approximately 59.8%, indicating the included characteristics carry
+        some predictive information but aren't sufficient on their own to accurately predict
+        majority-party membership.
+      </p>
+
+      <h2>Key Findings</h2>
+      <ul>
+        <li>Congressional representation changes substantially over time</li>
+        <li>The Democratic–Republican balance shifts across congressional periods</li>
+        <li>Electoral performance varies considerably between individual members</li>
+        <li>Party affiliation, demographic characteristics, majority-party status, and seniority are statistically associated with vote percentage</li>
+        <li>Seniority and political power show a relationship within Congress, though this is exploratory rather than causal</li>
+        <li>Political power and formal leadership positions are concentrated among a relatively small share of members</li>
+        <li>Majority-party membership is associated with several of the characteristics examined</li>
+      </ul>
+
+      <h2>Main Conclusion</h2>
+      <p>
+        The project tells a broader story than simply asking who won an election. Elections determine
+        who enters Congress; party balance determines who forms the majority; experience and
+        institutional structures shape political influence, while leadership positions represent the
+        concentration of that influence. The findings should be read as associations rather than causal
+        effects — factors such as district characteristics, opposing candidates, campaign resources,
+        and incumbency are not fully captured by the models.
+      </p>
+
+      <h2>Tools & Technologies</h2>
+      <div class="skills-list">
+        <span class="skill-tag">R</span>
+        <span class="skill-tag">R Markdown</span>
+        <span class="skill-tag">Tidyverse</span>
+        <span class="skill-tag">ggplot2</span>
+        <span class="skill-tag">gganimate</span>
+        <span class="skill-tag">OLS Regression</span>
+        <span class="skill-tag">Logistic Regression</span>
+        <span class="skill-tag">Robust Standard Errors</span>
+      </div>
+
+      <a href="https://github.com/gargi24dey-cmd/us-congressional-elections-analysis" target="_blank" class="download-btn">View Full Repository on GitHub</a>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2026 Gargi Dey. Built with HTML, CSS & JavaScript.</p>
+  </footer>
+
+  <script src="theme.js"></script>
+</body>
+</html>
