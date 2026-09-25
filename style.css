@@ -414,4 +414,30 @@ body {
 .page-layout {
   flex: 1;
 }
+.project-image {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  margin: 15px 0;
+  display: block;
+}
+
+.image-caption {
+  color: #777;
+  font-size: 0.85em;
+  font-style: italic;
+  margin-top: -8px;
+  margin-bottom: 20px;
+}
+.image-row {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.image-row .project-image {
+  flex: 1;
+  min-width: 250px;
+}
 
