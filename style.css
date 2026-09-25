@@ -397,3 +397,17 @@ body.dark-mode .key-idea {
   margin-bottom: 10px;
 }
 
+html, body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.page-layout {
+  flex: 1;
+}
+
