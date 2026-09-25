@@ -440,4 +440,8 @@ body {
   flex: 1;
   min-width: 250px;
 }
+.page-content img {
+  max-width: 100%;
+  height: auto;
+}
 
