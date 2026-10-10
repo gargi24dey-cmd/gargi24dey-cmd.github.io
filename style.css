@@ -445,3 +445,43 @@ body {
   height: auto;
 }
 
+```css
+.results-table {
+    width: 100%;
+    max-width: 600px;
+    border-collapse: collapse;
+    margin: 20px 0 30px;
+    table-layout: auto;
+}
+
+.results-table th,
+.results-table td {
+    padding: 12px 16px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.results-table th {
+    background-color: #14532d;
+    color: #ffffff;
+}
+
+.results-table td {
+    background-color: #ffffff;
+    color: #333333;
+}
+
+.results-table th:first-child,
+.results-table td:first-child {
+    width: 30%;
+}
+
+.site-footer {
+    position: static;
+    clear: both;
+    width: 100%;
+    box-sizing: border-box;
+    margin-top: 30px;
+}
+```
+
