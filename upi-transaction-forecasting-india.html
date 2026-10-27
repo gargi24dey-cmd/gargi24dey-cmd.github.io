@@ -1,0 +1,805 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Forecasting India's UPI transaction growth using Python and time-series analysis.">
+    <title>UPI Transaction Forecasting | Portfolio</title>
+
+    <style>
+        :root {
+            --bg: #f7f8fc;
+            --card: #ffffff;
+            --text: #24283b;
+            --muted: #667085;
+            --accent: #6558d3;
+            --accent-light: #eeecff;
+            --border: #e4e7ef;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .navbar {
+            background: var(--card);
+            border-bottom: 1px solid var(--border);
+            padding: 18px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar a {
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .container {
+            width: min(1050px, 88%);
+            margin: auto;
+        }
+
+        .hero {
+            padding: 85px 0 55px;
+            background: linear-gradient(135deg, #eeecff, #f7f8fc 65%);
+        }
+
+        .tag {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            padding: 6px 13px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(2.2rem, 5vw, 3.6rem);
+            line-height: 1.15;
+            letter-spacing: -1.5px;
+            margin-bottom: 22px;
+        }
+
+        .hero p {
+            max-width: 780px;
+            font-size: 18px;
+            color: var(--muted);
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 28px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 19px;
+            border-radius: 9px;
+            background: var(--accent);
+            color: white;
+            font-weight: bold;
+        }
+
+        .btn-outline {
+            background: white;
+            color: var(--accent);
+            border: 1px solid var(--border);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .stat, .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 23px;
+        }
+
+        .stat strong {
+            display: block;
+            font-size: 25px;
+            margin-bottom: 5px;
+        }
+
+        .stat span {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        section {
+            padding: 55px 0;
+        }
+
+        .section-title {
+            font-size: 30px;
+            margin-bottom: 12px;
+            letter-spacing: -0.7px;
+        }
+
+        .section-intro {
+            color: var(--muted);
+            max-width: 780px;
+            margin-bottom: 28px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            font-size: 19px;
+        }
+
+        .card p, .card li {
+            color: var(--muted);
+        }
+
+        .card ul {
+            padding-left: 20px;
+        }
+
+        .card li {
+            margin-bottom: 8px;
+        }
+
+        .full-width {
+            margin-top: 20px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .tags span {
+            border: 1px solid var(--border);
+            background: #fafaff;
+            padding: 6px 11px;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #4b4b64;
+        }
+
+        .method {
+            display: grid;
+            grid-template-columns: 42px 1fr;
+            gap: 15px;
+            margin-bottom: 24px;
+        }
+
+        .number {
+            width: 38px;
+            height: 38px;
+            display: grid;
+            place-items: center;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-weight: bold;
+            border-radius: 50%;
+        }
+
+        .method h3 {
+            margin-bottom: 5px;
+        }
+
+        .method p {
+            color: var(--muted);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th, td {
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+
+        th {
+            background: var(--accent-light);
+            font-size: 13px;
+        }
+
+        td {
+            font-size: 14px;
+        }
+
+        .best {
+            color: #147d78;
+            font-weight: bold;
+        }
+
+        .finding {
+            padding: 18px 20px;
+            margin-bottom: 14px;
+            background: white;
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent);
+            border-radius: 8px;
+        }
+
+        .finding p {
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        .conclusion {
+            background: #24243b;
+            color: white;
+            border-radius: 18px;
+            padding: 35px;
+        }
+
+        .conclusion p {
+            color: #d8d8e7;
+            margin-top: 12px;
+        }
+
+        footer {
+            padding: 30px 0;
+            text-align: center;
+            color: var(--muted);
+            border-top: 1px solid var(--border);
+            font-size: 14px;
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding-top: 55px;
+            }
+
+            .section-title {
+                font-size: 26px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<nav class="navbar">
+    <a href="../index.html">My Portfolio</a>
+
+    <div class="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#methodology">Methodology</a>
+        <a href="#results">Results</a>
+        <a href="#limitations">Limitations</a>
+    </div>
+</nav>
+
+<header class="hero" id="overview">
+    <div class="container">
+        <span class="tag">ECONOMICS · DATA ANALYTICS · PYTHON</span>
+
+        <h1>Forecasting UPI Growth in India (2016–2026)</h1>
+
+        <p>
+            A time-series analysis of India's Unified Payments Interface (UPI)
+            transaction growth, comparing forecasting approaches and examining
+            how reliably they predict transaction volume as growth patterns change.
+        </p>
+
+        <div class="buttons">
+            <!-- Replace YOUR-USERNAME with your GitHub username -->
+            <a class="btn"
+               href="https://github.com/YOUR-USERNAME/upi-transaction-forecasting-india"
+               target="_blank" rel="noopener noreferrer">
+                View GitHub Repository ↗
+            </a>
+
+            <a class="btn btn-outline" href="../index.html">
+                ← Back to Portfolio
+            </a>
+        </div>
+
+        <div class="stats">
+            <div class="stat">
+                <strong>123</strong>
+                <span>Monthly observations</span>
+            </div>
+
+            <div class="stat">
+                <strong>2016–2026</strong>
+                <span>Study period</span>
+            </div>
+
+            <div class="stat">
+                <strong>8</strong>
+                <span>Forecasting approaches</span>
+            </div>
+
+            <div class="stat">
+                <strong>14</strong>
+                <span>Rolling-origin windows</span>
+            </div>
+        </div>
+    </div>
+</header>
+
+<main>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">Project Overview</h2>
+
+        <p class="section-intro">
+            India's digital payments ecosystem has expanded rapidly over the
+            past decade. However, forecasting transaction activity becomes
+            challenging when growth rates change over time. This project
+            evaluates different forecasting methods to understand which
+            approaches perform more reliably across different periods.
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Research Question</h3>
+                <p>
+                    How accurately can monthly UPI transaction volume be
+                    forecast, and does the performance of forecasting models
+                    change across forecast horizons and evaluation periods?
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Objectives</h3>
+                <ul>
+                    <li>Study UPI transaction volume and value trends.</li>
+                    <li>Examine changes in transaction growth.</li>
+                    <li>Compare alternative forecasting models.</li>
+                    <li>Evaluate forecast errors using out-of-sample data.</li>
+                    <li>Compare transaction volume and value growth.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">Dataset and Tools</h2>
+
+        <p class="section-intro">
+            The analysis uses monthly aggregate UPI statistics published by
+            the National Payments Corporation of India (NPCI).
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Dataset Details</h3>
+                <ul>
+                    <li><strong>Source:</strong> NPCI UPI Product Statistics</li>
+                    <li><strong>Period:</strong> April 2016–June 2026</li>
+                    <li><strong>Frequency:</strong> Monthly</li>
+                    <li><strong>Observations:</strong> 123 months</li>
+                    <li><strong>Coverage:</strong> India, national aggregate</li>
+                    <li><strong>Variables:</strong> Transaction volume,
+                        transaction value, month and derived time-series variables.</li>
+                </ul>
+
+                <p style="margin-top: 15px;">
+                    <a href="https://www.npci.org.in/product/upi/product-statistics"
+                       target="_blank" rel="noopener noreferrer">
+                        View NPCI data source ↗
+                    </a>
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Tools and Technologies</h3>
+                <p>
+                    Python was used for data preparation, exploratory analysis,
+                    statistical testing, model estimation and forecast evaluation.
+                </p>
+
+                <div class="tags">
+                    <span>Python</span>
+                    <span>Google Colab</span>
+                    <span>pandas</span>
+                    <span>NumPy</span>
+                    <span>Matplotlib</span>
+                    <span>statsmodels</span>
+                    <span>scikit-learn</span>
+                    <span>SciPy</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="methodology">
+    <div class="container">
+        <h2 class="section-title">Methodology</h2>
+
+        <p class="section-intro">
+            The project follows a structured time-series workflow, from
+            data preparation and trend analysis to model comparison and
+            out-of-sample forecasting evaluation.
+        </p>
+
+        <div class="card">
+            <div class="method">
+                <div class="number">1</div>
+                <div>
+                    <h3>Data Cleaning and Preparation</h3>
+                    <p>
+                        Prepared monthly dates, converted numeric variables,
+                        checked missing values and duplicate observations,
+                        and constructed growth rates, lag variables and
+                        log-transformed series where appropriate.
+                    </p>
+                </div>
+            </div>
+
+            <div class="method">
+                <div class="number">2</div>
+                <div>
+                    <h3>Exploratory Data Analysis</h3>
+                    <p>
+                        Examined transaction volume and value over time,
+                        calculated growth rates, and investigated the
+                        relationship between the expansion of UPI and
+                        transaction activity.
+                    </p>
+                </div>
+            </div>
+
+            <div class="method">
+                <div class="number">3</div>
+                <div>
+                    <h3>Time-Series Diagnostics</h3>
+                    <p>
+                        Used the Augmented Dickey–Fuller (ADF) test to
+                        assess stationarity and examined potential changes
+                        in the growth pattern using structural-change tests.
+                    </p>
+                </div>
+            </div>
+
+            <div class="method">
+                <div class="number">4</div>
+                <div>
+                    <h3>Forecasting Models</h3>
+                    <p>
+                        Compared naïve forecasting, Simple Exponential
+                        Smoothing (SES), Holt's linear trend, damped Holt,
+                        recursive linear regression and ARIMA specifications.
+                    </p>
+                </div>
+            </div>
+
+            <div class="method">
+                <div class="number">5</div>
+                <div>
+                    <h3>Forecast Evaluation</h3>
+                    <p>
+                        Evaluated models using a chronological 12-month
+                        hold-out period and rolling-origin evaluation
+                        across 14 forecast origins, with a 12-month
+                        forecast horizon.
+                    </p>
+                </div>
+            </div>
+
+            <div class="method">
+                <div class="number">6</div>
+                <div>
+                    <h3>Volume and Value Comparison</h3>
+                    <p>
+                        Compared transaction volume growth with total
+                        transaction value growth and examined changes
+                        in aggregate average transaction value.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="results">
+    <div class="container">
+        <h2 class="section-title">Forecasting Results</h2>
+
+        <p class="section-intro">
+            Rolling-origin evaluation was used to compare how forecasting
+            approaches performed across multiple evaluation windows.
+            Lower MAE and RMSE values indicate smaller forecast errors.
+        </p>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Model</th>
+                        <th>Rolling MAE</th>
+                        <th>Rolling RMSE</th>
+                        <th>Rolling MAPE</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="best">Holt Linear Trend</td>
+                        <td>452.93 million</td>
+                        <td>566.96 million</td>
+                        <td>3.54%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Holt Damped Trend</td>
+                        <td>494.30 million</td>
+                        <td>612.93 million</td>
+                        <td>3.85%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Recursive Linear Regression</td>
+                        <td>1,221.11 million</td>
+                        <td>1,507.36 million</td>
+                        <td>9.08%</td>
+                    </tr>
+
+                    <tr>
+                        <td>ARIMA (reselected)</td>
+                        <td>1,768.52 million</td>
+                        <td>2,238.27 million</td>
+                        <td>12.52%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Naïve Forecast</td>
+                        <td>2,304.76 million</td>
+                        <td>2,663.65 million</td>
+                        <td>17.10%</td>
+                    </tr>
+
+                    <tr>
+                        <td>Simple Exponential Smoothing</td>
+                        <td>2,325.33 million</td>
+                        <td>2,682.53 million</td>
+                        <td>17.20%</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <p style="color: var(--muted); margin-top: 12px; font-size: 13px;">
+            Note: Error values are in million transactions. These are selected
+            model results from the project analysis, not guarantees of future
+            forecasting performance.
+        </p>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">Key Findings</h2>
+
+        <p class="section-intro">
+            The analysis highlights the expansion of UPI, changes in growth
+            patterns, and differences in forecasting performance.
+        </p>
+
+        <div class="finding">
+            <strong>1. UPI transaction volume expanded substantially.</strong>
+            <p>
+                Monthly transaction volume rose from zero in the initial
+                recorded months to more than 22,700 million transactions
+                in June 2026.
+            </p>
+        </div>
+
+        <div class="finding">
+            <strong>2. Growth slowed as the system matured.</strong>
+            <p>
+                Average monthly growth fell from 33.42% in the early launch
+                period to 3.36% during April 2021–June 2026.
+            </p>
+        </div>
+
+        <div class="finding">
+            <strong>3. Holt's linear trend performed best in the evaluation.</strong>
+            <p>
+                It achieved a rolling-origin RMSE of 566.96 million
+                transactions and the lowest RMSE in 13 out of 14
+                evaluation windows.
+            </p>
+        </div>
+
+        <div class="finding">
+            <strong>4. Forecast errors increased at longer horizons.</strong>
+            <p>
+                Mean absolute error was higher for forecast months 10–12
+                than for months 1–3 in the evaluated models.
+            </p>
+        </div>
+
+        <div class="finding">
+            <strong>5. Transaction volume grew faster than total value.</strong>
+            <p>
+                From June 2021 to June 2026, volume increased by 709.12%,
+                while transaction value increased by 428.37%. The
+                aggregate average value per transaction declined by 34.7%.
+            </p>
+        </div>
+
+        <div class="finding">
+            <strong>6. Structural changes require careful interpretation.</strong>
+            <p>
+                Potential changes in the series were examined, but changes
+                in reporting methodology and the underlying growth pattern
+                limit the conclusions that can be drawn about their causes.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section id="limitations">
+    <div class="container">
+        <h2 class="section-title">Limitations</h2>
+
+        <p class="section-intro">
+            The findings should be interpreted in light of the scope of
+            the dataset and the assumptions behind the forecasting models.
+        </p>
+
+        <div class="grid">
+            <div class="card">
+                <h3>Data Limitations</h3>
+                <ul>
+                    <li>National aggregate data do not capture regional
+                        or individual payment behaviour.</li>
+                    <li>Reporting methodology changes may affect
+                        comparability across periods.</li>
+                    <li>Transaction value is nominal and not adjusted
+                        for inflation.</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>Model Limitations</h3>
+                <ul>
+                    <li>Models rely mainly on historical patterns rather
+                        than external economic drivers.</li>
+                    <li>Rolling-origin windows overlap, so their errors
+                        are not independent observations.</li>
+                    <li>Past forecast accuracy does not guarantee
+                        future performance.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="conclusion">
+            <h2>Conclusion</h2>
+
+            <p>
+                India's UPI transaction volume continued to increase between
+                2016 and 2026, while its growth rate slowed after the initial
+                expansion phase. Among the evaluated models, Holt's linear
+                trend produced the lowest rolling-origin forecast errors.
+                The results also show that forecasting reliability can vary
+                with the prediction horizon and the period being evaluated.
+            </p>
+
+            <p>
+                Overall, the project demonstrates how time-series analysis
+                and systematic forecast evaluation can be used to study
+                the evolution of India's digital payments ecosystem.
+            </p>
+
+            <div class="buttons">
+                <a class="btn"
+                   href="https://github.com/YOUR-USERNAME/upi-transaction-forecasting-india"
+                   target="_blank" rel="noopener noreferrer">
+                    Explore Project on GitHub ↗
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="section-title">My Contribution</h2>
+
+        <p class="section-intro">
+            This was a group project. The contribution list below follows
+            the responsibilities attributed to the author in the project report.
+        </p>
+
+        <div class="card">
+            <ul>
+                <li>Literature background and research gap</li>
+                <li>Data validation and preparation for analysis</li>
+                <li>Transaction value, average transaction size and growth analysis</li>
+                <li>ACF/PACF analysis and structural-change discussion</li>
+                <li>Damped Holt, regression and ARIMA models</li>
+                <li>Rolling-origin evaluation and horizon-wise error analysis</li>
+                <li>Model comparison, limitations, findings and presentation slides</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    <div class="container">
+        <p><strong>Forecasting UPI Growth in India (2016–2026)</strong></p>
+        <p>MSc Economics · Data Analytics · Python</p>
+        <p>Data source: National Payments Corporation of India (NPCI)</p>
+    </div>
+</footer>
+
+</body>
+</html>
